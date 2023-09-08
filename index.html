@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HNGx stage one</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="user">
+      <!-- slack display picture with data-testid="slackDisplayImage" and alt attribute={slack username} -->
+      <img
+        class="profile-img"
+        src="/images/eedriz_1.jpg"
+        alt="Akinsola Idris"
+        data-testid="slackDisplayImage"
+      />
+
+      <div class="user-info-text">
+        <!-- Slack dispaly name with data-testid="slackUserName"-->
+        <h1 data-testid="slackUserName" class="username">Akinsola Idris</h1>
+
+        <!-- HNGx track with data-testid="myTrack" -->
+        <p class="track" data-testid="myTrack">Frontend</p>
+      </div>
+    </div>
+    <div class="time-date-container">
+      <div class="time-date">
+        <!-- current day of the week (e.g. Monday) with data-testid="currentDayOfTheWeek" -->
+        <p id="day">current day</p>
+      </div>
+      <div class="time-date">
+        <!-- current UTC time in milliseconds and with data-testid="currentUTCTime" -->
+        <p id="time"></p>
+      </div>
+    </div>
+    <!-- click able link to github repository with data-testid="githubURL" -->
+  </body>
+
+  <script>
+    let day = document.querySelector("#day");
+    let time = document.querySelector("#time");
+
+    const Now = new Date();
+
+    let today;
+
+    switch (Now.getDay()) {
+      case 0:
+        today = "Sunday";
+        break;
+      case 1:
+        today = "Monday";
+        break;
+      case 2:
+        today = "Tuesday";
+        break;
+      case 3:
+        today = "Wednesday";
+        break;
+      case 4:
+        today = "Thursday";
+        break;
+      case 5:
+        today = "Friday";
+        break;
+      case 6:
+        today = "Saturday";
+        break;
+      default:
+        today = "Invalid day of the week";
+    }
+    day.innerHTML = today;
+    time.innerHTML = Now.getUTCMilliseconds();
+  </script>
+</html>
